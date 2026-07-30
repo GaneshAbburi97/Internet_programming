@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+    <h1>AJAX the HttpRequest Object</h1>
+    <div id="demo">
+        <p> let change the content</p>
+        <button type="button" onclick="loadDoc()">Change Content</button>
+    </div>
+    <script>
+        function loadDoc()
+        {
+            const xhttp=new XMLHTTPRequest();
+            xhttp.onload=function(){
+                document.getElementById("demo").innerhtml =this.responseText;
+            }
+            xhttp.open("GET","sample.txt",true);
+            xhttp.send();
+        }
+        </script>
+</html>
