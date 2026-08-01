@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Experiment 2 - Form Validation</title>
+
+<style>
+
+body{
+font-family:Arial;
+background:#f2f2f2;
+}
+
+.container{
+width:350px;
+margin:50px auto;
+background:white;
+padding:20px;
+border-radius:10px;
+box-shadow:0 0 10px gray;
+}
+
+input{
+width:100%;
+padding:10px;
+margin:10px 0;
+}
+
+input[type=submit]{
+background:#2c3e50;
+color:white;
+border:none;
+cursor:pointer;
+}
+
+span{
+font-size:14px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h2>Registration Form</h2>
+
+<form onsubmit="return validateForm()">
+
+<label>Email</label>
+
+<input type="text" id="email" onkeyup="validateEmail()">
+
+<span id="emailError"></span>
+
+<br><br>
+
+<label>Phone Number</label>
+
+<input type="text" id="phone" onkeyup="validatePhone()">
+
+<span id="phoneError"></span>
+
+<br><br>
+
+<input type="submit" value="Register">
+
+</form>
+
+</div>
+
+<script>
+
+function validateEmail(){
+
+let email=document.getElementById("email").value;
+
+let pattern=/^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/;
+
+if(pattern.test(email)){
+document.getElementById("emailError").innerHTML="Valid Email";
+document.getElementById("emailError").style.color="green";
+return true;
+}
+else{
+document.getElementById("emailError").innerHTML="Invalid Email";
+document.getElementById("emailError").style.color="red";
+return false;
+}
+
+}
+
+function validatePhone(){
+
+let phone=document.getElementById("phone").value;
+
+let pattern=/^[6-9][0-9]{9}$/;
+
+if(pattern.test(phone)){
+document.getElementById("phoneError").innerHTML="Valid Phone Number";
+document.getElementById("phoneError").style.color="green";
+return true;
+}
+else{
+document.getElementById("phoneError").innerHTML="Invalid Phone Number";
+document.getElementById("phoneError").style.color="red";
+return false;
+}
+
+}
+
+function validateForm(){
+
+if(validateEmail() && validatePhone()){
+alert("Registration Successful");
+return true;
+}
+
+alert("Please Enter Valid Details");
+return false;
+
+}
+
+</script>
+
+</body>
+</html>
